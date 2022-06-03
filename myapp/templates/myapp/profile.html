@@ -1,0 +1,152 @@
+{% extends "myapp/base1.html"%}
+{% block content %}
+
+
+    <!--Offcanvas Section Start-->
+    <div id="offcanvas" class="offcanvas-section">
+        <button class="offcanvas-close" data-bs-target="#offcanvas">&times;</button>
+        <div class="offcanvas-wrap">
+            <div class="inner">
+
+                
+
+                <!-- Offcanvas Menu Start -->
+                <div class="offcanvas-menu">
+                    <nav>
+                        <ul>
+                            <li class="has-children"><a href="index.html">Home</a>
+                                <ul class="sub-menu">
+                                    <li><a href="index.html">Home One</a></li>
+                                    <li><a href="index-2.html">Home Two</a></li>
+                                </ul>
+                            </li>
+                            <li class="has-children"><a href="job-list.html">Jobs</a>
+                                <ul class="sub-menu">
+                                    <li><a href="job-list.html">Job List</a></li>
+                                    <li><a href="job-single.html">Job Single</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="company-list.html">Company</a>
+                                <ul class="sub-menu">
+                                    <li><a href="company-list.html">Company List</a></li>
+                                    <li><a href="company-single.html">Company Single</a></li>
+                                    <li><a href="create-job.html">Create Job</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#">Pages</a>
+                                <ul class="sub-menu">
+                                    <li><a href="about-us.html">About Us</a></li>
+                                    <li><a href="faq.html">FAQ'S</a></li>
+                                    <li><a href="pricing.html">Pricing</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="blog.html">Blog</a>
+                                <ul class="sub-menu">
+                                    <li><a href="blog.html">Blog</a></li>
+                                    <li><a href="blog-right-sidebar.html">Blog Right Sidebar</a></li>
+                                    <li><a href="blog-single.html">Blog Single</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="contact.html">Contact us</a></li>
+                            <li><a href="signup.html">SignUp</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <!-- Offcanvas Menu End -->
+
+            </div>
+        </div>
+    </div>
+    <!--Offcanvas Section End-->
+    <!--OffCanvas Overlay-->
+    <div class="offcanvas-overlay"></div>
+
+
+    
+
+    <!-- Page Heading Section Start -->
+    <div class="page-heading-section section bg-parallax" data-bg-image="assets/images/bg/bg-1.jpg" data-overlay="50">
+        <div class="container">
+            <div class="page-heading-content text-center">
+                <h3 class="title">Candidate Profile</h3>
+                <ol class="breadcrumb">
+                    <li><a href="index.html">Home</a></li> &nbsp;&nbsp;
+                    <li class="breadcrumb-item"><a href="company-list.html">Candidate Profile </a></li> &nbsp; &nbsp;
+                    <li>Create Job </li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <!-- Page Heading Section End -->
+
+    <!-- Create Job Start -->
+
+    <div class="section section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="create-job-form col-lg-10 mx-auto">
+                    <div>
+                        <h3>Update Your Profile</h3>
+                    </div>
+                    <form action="#" action="{% url 'updateprofile' pk=request.session.id %}" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="row mb-n3">
+                            <div class="col-md-6 col-12 mb-3">
+                                <label for="jobTitle">firstname</label>
+                                <input type="text" id="jobTitle" placeholder="enter your name" name="firstname" value="{{can.firstname}}">
+                            </div>
+                            <div class="col-md-6 col-12 mb-3">
+                                <label for="applicationDeadline">lastname</label>
+                                <input type="text" id="applicationDeadline" placeholder="enter your lastname" name="lastname" value="{{can.lastname}}">
+                            </div>
+                            <div class="col-md-6 col-12 mb-3">
+                                <label for="jobTitle">email</label>
+                                <input type="text" id="jobTitle" placeholder="enter your email" name="email" value="{{user.email}}">
+                            </div>
+                            <div class="col-md-6 col-12 mb-3">
+                                <label for="jobTitle">contact</label>
+                                <input type="text" id="jobTitle" placeholder="enter your contact" name="contact">
+                            </div>
+                            <div class="col-md-6 col-12 mb-3">
+                                <label for="applicationDeadline">DOB</label>
+                                <input type="text" id="applicationDeadline" placeholder="enter your birth date" name="dob">
+                            </div>
+                            <div class="col-md-6 col-12 mb-3">
+                                <label for="jobGender" name="gender">Gender</label>
+                                <select id="jobGender">
+                                    <option value="type1">Any</option>
+                                    <option value="type2">Male</option>
+                                    <option value="type3">Female</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 col-12 mb-3">
+                                <label for="jobTitle">city</label>
+                                <input type="text" id="jobTitle" placeholder="enter your city" name="city">
+                            </div>
+                            <div class="col-md-6 col-12 mb-3">
+                                <label for="applicationDeadline">state</label>
+                                <input type="text" id="applicationDeadline" placeholder="enter your state" name="state">
+                            </div>
+                            
+                            <div>
+                                <label for="image">profile_pic</label>
+                                <input type="file" name="image" id="" value="upload img">
+
+                            </div>
+                            
+                            <div class="col-12 mb-3">
+                                <br>
+                            
+                                <button type="submit" class="btn btn-primary px-5" value="save">save</button>
+                            </div>
+                           
+                        </div>
+                        <div class="row"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Create Job End -->
+
+   {% endblock %}
